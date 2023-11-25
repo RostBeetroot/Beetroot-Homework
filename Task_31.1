@@ -1,0 +1,38 @@
+-- №1
+select employees.first_name, employees.last_name, employees.department_id, department.department_name
+from employees left join department on employees.department_id = department.department_id;
+
+-- №2
+select employees.first_name, employees.last_name, department.department_name, locations.city, locations.state_province
+from employees left join department on employees.department_id = department.department_id left join locations on department.location_id = locations.location_id;
+
+-- №3
+select employees.first_name, employees.last_name, department.department_id, department.department_name
+from employees left join department on employees.department_id = department.department_id
+where department.department_id = 80 or department.department_id = 40;
+
+--№4
+select employees.first_name, employees.last_name, department.department_id, department.department_name
+from department left join employees on employees.department_id = department.department_id;
+
+--№5
+select employees.first_name, department.manager_id
+from employees inner join  department on employees.manager_id = department.manager_id;
+
+--№6
+select employees.first_name, employees.last_name,  jobs.job_title, jobs.max_salary - employees.salary
+from employees inner join jobs on employees.job_id = jobs.job_id;
+
+--№7
+select job_title, (min_salary + max_salary)/2
+from jobs;
+
+--№8
+select employees.first_name, employees.last_name, employees.salary, locations.city, department.location_id
+from employees left join department on employees.department_id = department.department_id left join locations on department.location_id = locations.location_id
+where locations.city = 'London';
+
+--№9
+select department.department_name, count(employees.employee_id)
+from department left join employees on department.department_id = employees.department_id
+group by department.department_name;
