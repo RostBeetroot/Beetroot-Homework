@@ -1,0 +1,19 @@
+ALTER TABLE new_students
+RENAME to old_students;
+
+ALTER TABLE old_students
+ADD rating integer;
+
+INSERT into old_students(id, first_name, second_name, age, group_id, rating)
+VALUES (4, 'Carl', 'Johnson', 26, 2, 4);
+
+INSERT into old_students(id, first_name, second_name, age, group_id, rating)
+VALUES (5, 'Peter', 'Jackson', 28, 2, 5);
+
+UPDATE old_students set rating = 3 where first_name = 'Ivan';
+UPDATE old_students set rating = 2 where first_name = 'Petro';
+UPDATE old_students set rating = 1 where first_name = 'Jessie';
+
+DELETE from old_students where id = 5;
+
+select * from old_students order by id
