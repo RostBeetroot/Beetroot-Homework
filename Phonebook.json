@@ -1,0 +1,13 @@
+{
+    "Phonebook": [
+        {
+            "Full name": {
+                "First name": "John",
+                "Last name": "Smith"
+            },
+            "Phone number": "+380505557733",
+            "E-mail": "example@gmail.com",
+            "City": "Dnipro"
+        }
+    ]
+}
