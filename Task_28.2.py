@@ -1,37 +1,40 @@
-def merge_sort(array):
-    if len(array) > 1:
-        mid = len(array) // 2
-        left_half = array[:mid]
-        right_half = array[mid:]
+list_a = [10, 20, 15, 30, 5]
 
-        merge_sort(left_half)
-        merge_sort(right_half)
 
-        i = j = k = 0
+# function to merge two sorted lists
+def merge_list(x, y):
+    c = []
+    N = len(x)
+    M = len(y)
 
-        # Merge the two halves
-        while i < len(left_half) and j < len(right_half):
-            if left_half[i] < right_half[j]:
-                array[k] = left_half[i]
-                i += 1
-            else:
-                array[k] = right_half[j]
-                j += 1
-            k += 1
-
-        # Check if any elements are left in either of the halves
-        while i < len(left_half):
-            array[k] = left_half[i]
+    i = 0
+    j = 0
+    while i < N and j < M:
+        if x[i] <= y[j]:
+            c.append(x[i])
             i += 1
-            k += 1
-
-        while j < len(right_half):
-            array[k] = right_half[j]
+        else:
+            c.append(y[j])
             j += 1
-            k += 1
+
+    c += x[i:] + y[j:]
+    return c
 
 
-# Example
-my_list = [38, 27, 43, 3, 9, 82, 10]
-merge_sort(my_list)
-print("Sorted array:", my_list)
+# function of splitting a list and merging lists into a common sorted list
+def split_and_merge_list(a):
+    N1 = len(a) // 2
+    a1 = a[:N1]
+    a2 = a[N1:]
+
+    if len(a1) > 1:
+        a1 = split_and_merge_list(a1)
+    if len(a2) > 1:
+        a2 = split_and_merge_list(a2)
+
+    return merge_list(a1, a2)
+
+
+list_a = split_and_merge_list(list_a)
+
+print(f'Result Task 2: {list_a}')
